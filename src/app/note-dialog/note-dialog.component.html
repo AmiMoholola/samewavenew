@@ -1,0 +1,32 @@
+<link href="https://fonts.googleapis.com/css?family=Proxima+Nova" rel="stylesheet">
+
+<div class="dialog-container">
+  
+  <div class="error_log" *ngIf="dialog_icon_name != '' && dialog_graphic_name != ''; else Noerror">
+      <p>Error you can't display both the graphic and icon.</p>
+  </div>
+
+    <ng-template #Noerror>
+      <div *ngIf="dialog_icon_name != ''">
+        <mat-icon class="icon" [ngStyle]="{'color':styleiconcolor()}"  svgIcon="{{  dialog_icon_name }}"></mat-icon>
+      </div>
+     <div *ngIf="dialog_graphic_name != ''">
+      <img class="graphic" src="assets/images/{{dialog_graphic_name}}">  
+     </div>
+    </ng-template>
+
+    <div class="dialog-heading" *ngIf="dialog_heading != ''">
+        <p>{{  dialog_heading }}</p>
+    </div>
+
+    <div class="dialog-content" *ngIf="dialog_content != ''">
+        <p>{{ dialog_content }}</p>
+    </div> 
+
+</div>
+
+  <div class="dialog-action-button" *ngIf="dialog_button_wording != ''">
+      <button mat-button mat-dialog-close>{{ dialog_button_wording }}</button>
+  </div>
+
+      
